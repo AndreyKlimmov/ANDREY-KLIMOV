@@ -142,7 +142,27 @@ while (m != 10) {
 // 	“товар” в зависимости от количества товаров в корзине.
 // 	Например 1 - товар, 4 - товара, 6 - товаров.
 
+
+// тут сразу вводил/выводил всплывающими окнами, но потом циклом запринтил для проверки...
+
 // let goodsInBasket = +prompt("Число в корзине:")
-// goodsInBasket > 4 || goodsInBasket === 0 ? qty = 'товаров' :
-// goodsInBasket === 1 ? qty = 'товар' : qty = 'товара'
-// alert(qty)
+let goodsInBasket
+let lastNumber
+let qty
+for (let i = -130; i < 1130; i++) {
+goodsInBasket = i
+
+isNaN(goodsInBasket) || goodsInBasket < 0 || goodsInBasket === '' ? goodsInBasket = 0 : null
+lastNumber = goodsInBasket
+if (String(lastNumber).length < 2) {
+	lastNumber === 1 ? qty = 'товар' :
+	lastNumber > 1 && lastNumber < 5 ? qty = 'товара' : qty = 'товаров'
+} else {
+	lastNumber = lastNumber % 100
+	lastNumber > 10 && lastNumber < 15 || lastNumber <= 0 ? qty = 'товаров' : 
+	lastNumber % 10 === 1 ? qty = 'товар' :
+	lastNumber % 10 > 1 && lastNumber % 10 < 5 ? qty = 'товара' : qty = 'товаров'
+}
+console.log(goodsInBasket, qty)
+}
+// alert(goodsInBasket + " " + qty)
